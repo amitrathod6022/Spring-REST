@@ -49,13 +49,4 @@ public class UserRestController {
 		}
 		return USERS.get(userId);
 	}
-
-	@ExceptionHandler(UserNotFoundException.class)
-	private ResponseEntity<UserErrorResponse> studentNotFound(UserNotFoundException ex) {
-		UserErrorResponse error = new UserErrorResponse();
-		error.setStatus(HttpStatus.NOT_FOUND.value());
-		error.setMessage(ex.getMessage());
-		error.setTimestamp(System.currentTimeMillis());
-		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-	}
 }
